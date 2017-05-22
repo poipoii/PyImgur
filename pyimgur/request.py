@@ -18,7 +18,7 @@
 # Note: The name should probably be changed to avoid confusion with the module
 # requestS
 
-from __future__ import print_function
+
 
 from numbers import Integral
 
@@ -54,7 +54,7 @@ def to_imgur_format(params):
     """Convert the parameters to the format Imgur expects."""
     if params is None:
         return None
-    return dict((k, convert_general(val)) for (k, val) in params.items())
+    return dict((k, convert_general(val)) for (k, val) in list(params.items()))
 
 
 def send_request(url, params=None, method='GET', data_field='data',
@@ -100,6 +100,6 @@ def send_request(url, params=None, method='GET', data_field='data',
         except Exception:
             pass
         resp.raise_for_status()
-    ratelimit_info = dict((k, int(v)) for (k, v) in resp.headers.items()
+    ratelimit_info = dict((k, int(v)) for (k, v) in list(resp.headers.items())
                           if k.startswith('x-ratelimit'))
     return content, ratelimit_info

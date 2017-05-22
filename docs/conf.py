@@ -46,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'PyImgur'
-copyright = u'2013, Andreas Damgaard Pedersen'
+project = 'PyImgur'
+copyright = '2013, Andreas Damgaard Pedersen'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -189,7 +189,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ('index', 'PyImgur.tex', u'PyImgur Documentation', u'Andreas Damgaard '
+    ('index', 'PyImgur.tex', 'PyImgur Documentation', 'Andreas Damgaard '
      'Pedersen', 'manual'),
 ]
 
@@ -219,8 +219,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'pyimgur', u'PyImgur Documentation',
-     [u'Andreas Damgaard Pedersen'], 1)
+    ('index', 'pyimgur', 'PyImgur Documentation',
+     ['Andreas Damgaard Pedersen'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -233,7 +233,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'PyImgur', u'PyImgur Documentation', u'Andreas Damgaard '
+    ('index', 'PyImgur', 'PyImgur Documentation', 'Andreas Damgaard '
      'Pedersen', 'PyImgur', 'One line description of project.',
      'Miscellaneous'),
 ]

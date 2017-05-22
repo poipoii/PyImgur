@@ -13,5 +13,5 @@ im.refresh_access_token()
 user = im.get_user('me')
 for album in user.get_albums():
     if not len(album.images):
-        print("Deleting album {}".format(album.id))
+        print(("Deleting album {}".format(album.id)))
         album.delete()

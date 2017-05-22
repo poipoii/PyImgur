@@ -40,7 +40,7 @@ PY3 = sys.version_info.major == 3
 if PY3:
     from urllib.parse import urlparse # pylint: disable=no-name-in-module,import-error
 else:
-    from urlparse import urlparse
+    from urllib.parse import urlparse
 
 import requests  # NOQA
 
@@ -95,7 +95,7 @@ class Basic_object(object):
             return self.deletehash
 
     def _populate(self, json_dict):
-        for key, value in json_dict.items():
+        for key, value in list(json_dict.items()):
             setattr(self, key, value)
         # TODO: ups will need to be likes, because that's what the webinterface
         # is. But we also have "voted" which is the current users vote on it.
@@ -587,7 +587,7 @@ class Image(Basic_object):
             size = size.lower().replace(' ', '_')
             if size not in valid_sizes:
                 raise LookupError('Invalid size. Valid options are: {0}'.format(
-                                  ", " .join(valid_sizes.keys())))
+                                  ", " .join(list(valid_sizes.keys()))))
         suffix = valid_sizes.get(size, '')
         base, sep, ext = self.link.rpartition('.')
         resp = requests.get(base + suffix + sep + ext)
@@ -743,7 +743,7 @@ class Imgur:
         # Note: When the cache is implemented, it's important that the
         # ratelimit info doesn't get updated with the ratelimit info in the
         # cache since that's likely incorrect.
-        for key, value in ratelimit_info.items():
+        for key, value in list(ratelimit_info.items()):
             setattr(self, key[2:].replace('-', '_'), value)
         return content
 
@@ -915,7 +915,7 @@ class Imgur:
                             'method': self.get_user}
                    }
         parsed_url = urlparse(url)
-        for obj_type, values in objects.items():
+        for obj_type, values in list(objects.items()):
             regex_result = re.match('/' + values['regex'], parsed_url.path)
             if regex_result is not None:
                 obj_id = regex_result.group('id')
