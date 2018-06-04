@@ -24,8 +24,12 @@ Unreleased
  * **[BUGFIX]** Fixed a bug where accessing a non-existing attribute on a
    object inheriting from Basic_object would throw a `IndexError` rather
    than the expected `AttributeError`.
+ * **[BUGFIX]** Fix setting rate limit info on Imgur instance after request.
+ * **[BUGFIX]** Fix Imgur API won't remove image from album.
  * **[CHANGE]** Tests that require authentication will now be skipped if
    authentication has not been set up.
+ * **[CHANGE]** Convert to Python3.
+ * **[CHANGE]** Add privacy into create_album.
 
 PyImgur 0.5.3
 -------------
