@@ -300,12 +300,12 @@ class Album(Basic_object):
             you cannot remove (non-existing, not owned by you or not part of
             album) will not cause exceptions, but fail silently.
         """
+        # https://stackoverflow.com/a/23860199
         url = (self._imgur._base_url + "/3/album/{0}/"
-               "remove_images".format(self._delete_or_id_hash))
+               "remove_images/?ids={1}".format(self._delete_or_id_hash, images))
         # NOTE: Returns True and everything seem to be as it should in testing.
         # Seems most likely to be upstream bug.
-        params = {'ids': images}
-        return self._imgur._send_request(url, params=params, method="DELETE")
+        return self._imgur._send_request(url, method="DELETE")
 
     def set_images(self, images):
         """
