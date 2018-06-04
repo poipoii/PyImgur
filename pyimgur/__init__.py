@@ -773,7 +773,7 @@ class Imgur:
         self.refresh_token = refresh_token or self.refresh_token
 
     def create_album(self, title=None, description=None, images=None,
-                     cover=None):
+                     privacy='public', cover=None):
         """
         Create a new Album.
 
@@ -783,12 +783,15 @@ class Imgur:
             after it's created.  Can be Image objects, ids or a combination of
             the two.  Images that you cannot add (non-existing or not owned by
             you) will not cause exceptions, but fail silently.
+        :param privacy: Sets the privacy level of the album.
+            Values are: public | hidden | secret. Defaults to user's privacy
+            settings for logged in users.
         :param cover: The id of the image you want as the albums cover image.
 
         :returns: The newly created album.
         """
         url = self._base_url + "/3/album/"
-        payload = {'ids': images, 'title': title,
+        payload = {'ids': images, 'title': title, 'privacy': privacy,
                    'description': description, 'cover': cover}
         resp = self._send_request(url, params=payload, method='POST')
         return Album(resp, self, has_fetched=False)
